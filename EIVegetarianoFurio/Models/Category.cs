@@ -8,5 +8,5 @@ namespace EIVegetarianoFurio.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public virtual ICollection<Dish> Dishes { get; set; } = new HashSet<Dish>();
-    }
+    } 
 }

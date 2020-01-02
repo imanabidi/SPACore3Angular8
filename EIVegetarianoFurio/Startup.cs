@@ -1,3 +1,4 @@
+using EIVegetarianoFurio.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,8 +22,11 @@ namespace EIVegetarianoFurio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IDishRepository, DishFileRespository>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
+
             {
                 configuration.RootPath = "ClientApp/dist";
             });
