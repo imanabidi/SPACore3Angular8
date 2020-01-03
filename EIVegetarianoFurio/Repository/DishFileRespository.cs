@@ -3,47 +3,85 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace EIVegetarianoFurio.Repository
 {
-    public class DishFileRespository : IDishRepository
+    public class FileDishRespository : IDishRepository
     {
         private readonly string _path;
 
-        public DishFileRespository(IHostEnvironment env)
+        public FileDishRespository(IHostEnvironment env)
         {
             _path = env.ContentRootPath;
         }
 
-        public Dish Delete(int id)
+        public Dish DeleteDish(int id)
         {
             throw new NotImplementedException();
         }
 
         public Dish GetDish(int id)
         {
-            throw new NotImplementedException();
+            return GetDishs()?.SingleOrDefault(x=>x.Id==id);
         }
 
         public IEnumerable<Dish> GetDishs()
         {
-            var path = Path.Combine(_path,"data","dishes.json");
+            var path = Path.Combine(_path, "data", "dishes.json");
             var json = File.ReadAllText(path);
 
-            var js = JsonSerializer.Deserialize<IEnumerable<Dish>>(json);
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                AllowTrailingCommas = true,
+                PropertyNameCaseInsensitive = true
+            };
+            var js = JsonSerializer.Deserialize<IEnumerable<Dish>>(json, options);
 
             return js;
         }
 
-        public Dish Insert(Dish dish)
+        public Dish CreateDish(Dish dish)
         {
-            throw new NotImplementedException();
+            var dishes = GetDishs().ToList() ?? new List<Dish>();
+
+            if (dishes.Count == 0)
+            {
+                dish.Id = 1;
+            }
+            else
+            {
+                var maxid = dishes.Max(x => x.Id) + 1;
+                dish.Id = maxid + 1;
+            }
+
+            dishes.Add(dish);
+
+            WriteToFile(dishes);
+
+            return dish;
         }
 
-        public Dish Update(Dish dish)
+        private void WriteToFile(List<Dish> dishes)
         {
-            throw new NotImplementedException();
+            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+            var jsontring = JsonSerializer.Serialize(dishes, options);
+            File.WriteAllText(_path, jsontring);
+        }
+
+        public Dish UpdateDish(Dish dish)
+        {
+           var dishes= GetDishs().ToList();
+           var dishToUpdate = dishes.SingleOrDefault(x=>x.Id  == dish.Id);
+           dishToUpdate.Description = dish.Description;
+           dishToUpdate.Name = dish.Name;
+           dishToUpdate.Price = dish.Price;
+           dishToUpdate.CategoryId = dish.CategoryId;
+            
+           WriteToFile(dishes);
+
+            return dishToUpdate;
         }
     }
 

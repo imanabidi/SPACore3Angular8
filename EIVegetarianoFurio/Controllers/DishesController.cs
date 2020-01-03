@@ -25,13 +25,46 @@ namespace EIVegetarianoFurio.Controllers
         {
             var res= _repository.GetDishs();
             if (res==null)
-            {
-                //return EmptyResult();
-                 throw new Exception("empty result");
-            }
+                return NotFound();
+        
+            return Ok(res);
+        }
+        [HttpGet("{Id}")]
+        public IActionResult Get(int Id)
+        {
+            var res = _repository.GetDish(Id);
+            if (res == null)
+                return NotFound();
 
             return Ok(res);
         }
 
+        [HttpPost]
+        public IActionResult Post(Dish dish)
+        {
+            var res = _repository.CreateDish(dish);
+            if (res == null)
+                return NotFound();
+
+            return CreatedAtAction("get", new { dish.Id },res);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int Id,Dish dish)
+        {
+            if (dish?.Id != Id)
+                return BadRequest();
+                        
+            if (!ModelState.IsValid)            
+                return BadRequest(ModelState);
+
+            if (_repository.GetDish(Id) == null)
+                return NotFound();
+
+
+            var result=_repository.UpdateDish(dish);
+
+            return Ok(result);
+        }
     }
 }

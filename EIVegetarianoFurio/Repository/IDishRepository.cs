@@ -10,11 +10,11 @@ namespace EIVegetarianoFurio.Repository
         public Dish GetDish(int id);
         public IEnumerable<Dish> GetDishs();
 
-        Dish Insert(Dish dish);
+        Dish CreateDish(Dish dish);
 
-        Dish Update(Dish dish);
+        Dish UpdateDish(Dish dish);
 
-        Dish Delete(int id);
+        Dish DeleteDish(int id);
 
     }
 
