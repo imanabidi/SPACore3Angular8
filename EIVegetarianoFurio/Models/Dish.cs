@@ -8,10 +8,11 @@ namespace EIVegetarianoFurio.Models
 {
     public class Dish
     {
-
         public int Id { get; set; }
-        [Required]
+
+        [Required,MaxLength(100)]
         public string Name { get; set; }
+        [MaxLength(250)]
         public string Description { get; set; }
         [Range(0,110)]
         public double Price { get; set; }

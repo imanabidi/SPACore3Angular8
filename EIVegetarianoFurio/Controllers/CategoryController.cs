@@ -16,7 +16,7 @@ namespace EIVegetarianoFurio.Controllers
     public class CategoryController : ControllerBase
     {
         private ICategoryRepository _repository;
-        private string   _path;
+        private string _path;
 
         public CategoryController(ICategoryRepository repo,IHostingEnvironment env)
         {
