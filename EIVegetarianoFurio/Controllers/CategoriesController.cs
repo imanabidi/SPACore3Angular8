@@ -13,12 +13,12 @@ namespace EIVegetarianoFurio.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private ICategoryRepository _repository;
         private string _path;
 
-        public CategoryController(ICategoryRepository repo,IHostingEnvironment env)
+        public CategoriesController(ICategoryRepository repo,IWebHostEnvironment env)
         {
             _repository = repo;
             _path = System.IO.Path.Combine(env.ContentRootPath, "data", "images", "categories");

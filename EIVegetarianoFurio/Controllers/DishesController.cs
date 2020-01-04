@@ -18,7 +18,7 @@ namespace EIVegetarianoFurio.Controllers
         private IDishRepository _repository;
         private string   _path;
 
-        public DishesController(IDishRepository repo,IHostingEnvironment env)
+        public DishesController(IDishRepository repo, IWebHostEnvironment env)
         {
             _repository = repo;
             _path = System.IO.Path.Combine(env.ContentRootPath, "data", "images", "dishes");

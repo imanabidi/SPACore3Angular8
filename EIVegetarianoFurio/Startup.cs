@@ -26,8 +26,8 @@ namespace EIVegetarianoFurio
             services.AddDbContext<VegiContext>(opt=> opt.UseSqlServer( Configuration.GetConnectionString("ElvContextCN")));
             services.AddControllersWithViews();
 
-            services.AddScoped<IDishRepository, FileDishRespository>();
-            services.AddScoped<ICategoryRepository, FileCategoryRespository>();
+            services.AddScoped<IDishRepository, EfDishRespository>();
+            services.AddScoped<ICategoryRepository, EfCategoryRespository>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => {
                 configuration.RootPath = "ClientApp/dist";

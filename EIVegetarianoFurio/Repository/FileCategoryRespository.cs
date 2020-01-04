@@ -51,19 +51,19 @@ namespace EIVegetarianoFurio.Repository
             return categories;
         }
 
-        public Category CreateCategory(Category Category)
+        public Category CreateCategory(Category category)
         {
             var Categories = GetCategories().ToList() ?? new List<Category>();
             if (Categories.Count == 0)
             {
-                Category.Id = 1;
+                category.Id = 1;
             }
             else             
-                Category.Id = Categories.Max(x => x.Id) + 1  ;
+                category.Id = Categories.Max(x => x.Id) + 1  ;
             
-            Categories.Add(Category);
+            Categories.Add(category);
             WriteToFile(Categories);
-            return Category;
+            return category;
         }
 
         private void WriteToFile(IEnumerable<Category> Categories)
@@ -73,12 +73,12 @@ namespace EIVegetarianoFurio.Repository
             File.WriteAllText(_path, jsontring);
         }
 
-        public Category UpdateCategory(Category Category)
+        public Category UpdateCategory(Category category)
         {
             var Categories = GetCategories().ToList();
-            var CategoryToUpdate = Categories.SingleOrDefault(x => x.Id == Category.Id);
-            CategoryToUpdate.Description = Category.Description;
-            CategoryToUpdate.Name = Category.Name;
+            var CategoryToUpdate = Categories.SingleOrDefault(x => x.Id == category.Id);
+            CategoryToUpdate.Description = category.Description;
+            CategoryToUpdate.Name = category.Name;
           
 
             WriteToFile(Categories);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EIVegetarianoFurio.Models
@@ -17,6 +18,7 @@ namespace EIVegetarianoFurio.Models
         [Range(0,110)]
         public double Price { get; set; }
         public int CategoryId { get; set; }
+        [JsonIgnore]
         public Category Category { get; set; }
 
     }
