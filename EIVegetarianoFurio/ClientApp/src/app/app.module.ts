@@ -10,9 +10,13 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { CounterComponent } from './counter/counter.component';
 //import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './category/category.service';
+
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,7 @@ import { CategoryService } from './category/category.service';
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule, MatCardModule, MatButtonModule
   ],
   providers: [CategoryService],
   bootstrap: [AppComponent]
