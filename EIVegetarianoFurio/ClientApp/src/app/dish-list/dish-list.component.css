@@ -1,0 +1,10 @@
+.dish-card {
+  max-width: 400px;
+  margin: 20px;
+  float: left;
+}
+
+.dish-card-footer {
+    padding:15px;
+    font-weight:bold;
+}

@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './category/category.service';
+import { DishListComponent } from './dish-list/dish-list.component';
+import { DishComponent } from './dish/dish.component';
 
 
 
@@ -23,7 +25,9 @@ import { CategoryService } from './category/category.service';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CategoryComponent,    
+    CategoryComponent,
+    DishListComponent,
+    DishComponent,    
     //CounterComponent,
     //FetchDataComponent
   ],
@@ -33,6 +37,7 @@ import { CategoryService } from './category/category.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: CategoryComponent, pathMatch: 'full' },
+      { path: 'categories/:categoryId/dishes', component:  DishListComponent },
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),
