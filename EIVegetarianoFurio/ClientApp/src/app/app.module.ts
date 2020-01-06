@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CategoryComponent } from './category/category.component';
+import { CategoryService } from './category/category.service';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,14 @@ import { CategoryComponent } from './category/category.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: CategoryComponent, pathMatch: 'full' },
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

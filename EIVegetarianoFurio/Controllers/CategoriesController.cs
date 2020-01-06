@@ -25,7 +25,6 @@ namespace EIVegetarianoFurio.Controllers
 
         }
 
-
         public IActionResult Get()
         {
             var res= _repository.GetCategories();
