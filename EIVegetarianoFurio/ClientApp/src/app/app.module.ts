@@ -21,6 +21,7 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './category/category.service';
 import { DishListComponent } from './dish-list/dish-list.component';
 import { DishEditComponent } from './dish-edit/dish-edit.component';
+import { DishService } from './dish/dish.service';
 
 
 
@@ -49,7 +50,7 @@ import { DishEditComponent } from './dish-edit/dish-edit.component';
     BrowserAnimationsModule,
     MatToolbarModule, MatCardModule, MatButtonModule, MatInputModule, MatFormFieldModule
   ],
-  providers: [CategoryService],
+  providers: [CategoryService, DishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

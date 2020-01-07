@@ -1,13 +1,17 @@
-<div class="form-container">
+<div *ngIf="!dish">
+  Lade..
+</div>
+
+<div class="form-container" *ngIf="dish" >
   <mat-form-field>
-    <input matInput placeholder="Name" name="name">
+    <input matInput placeholder="Name" name="name" [(ngModel)]="dish.name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Preise" name="price">
+    <input matInput placeholder="Preise" name="price" [(ngModel)]="dish.price" type="number">
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="Beschreibung" name="description"></textarea>
+    <textarea matInput placeholder="Beschreibung" name="description" [(ngModel)]="dish.description"></textarea>
   </mat-form-field>
 
 </div>
