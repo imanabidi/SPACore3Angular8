@@ -1,0 +1,16 @@
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" name="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Preise" name="price">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Beschreibung" name="description"></textarea>
+  </mat-form-field>
+
+</div>
+
+<button mat-button (click)="saveDish()">Speichern</button>
+<button mat-button (click)="back()">Abbrechen</button>
