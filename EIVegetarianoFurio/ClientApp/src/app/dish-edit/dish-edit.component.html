@@ -1,4 +1,4 @@
-<div *ngIf="!dish">
+﻿<div *ngIf="!dish">
   Lade..
 </div>
 
@@ -16,5 +16,6 @@
 
 </div>
 
-<button mat-button (click)="saveDish()">Speichern</button>
+<button mat-button color="primary" (click)="saveDish()">Speichern</button>
 <button mat-button (click)="back()">Abbrechen</button>
+<button mat-button color="warn" (click)="delete()">Löschen</button>

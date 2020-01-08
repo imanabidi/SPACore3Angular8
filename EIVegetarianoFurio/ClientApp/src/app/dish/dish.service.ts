@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DishService {
-
+   
   constructor(private http: HttpClient) { }
   dish: Dish;
 
@@ -23,6 +23,9 @@ export class DishService {
     return this.http.post<Dish>('/api/dishes', dish);
   }
 
+  deleteDish(dishId: number) {
+    return this.http.delete<Dish>(`/api/dishes/${dishId}`);
+  }
 
 
 }
