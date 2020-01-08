@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { CategoryComponent } from './category/category.component';
@@ -22,6 +23,7 @@ import { CategoryService } from './category/category.service';
 import { DishListComponent } from './dish-list/dish-list.component';
 import { DishEditComponent } from './dish-edit/dish-edit.component';
 import { DishService } from './dish/dish.service';
+import { DishCreateComponent } from './dish-create/dish-create.component';
 
 
 
@@ -32,7 +34,7 @@ import { DishService } from './dish/dish.service';
     HomeComponent,
     CategoryComponent,
     DishListComponent,    
-    DishEditComponent,    
+    DishEditComponent, DishCreateComponent,    
     //CounterComponent,
     //FetchDataComponent
   ],
@@ -42,13 +44,14 @@ import { DishService } from './dish/dish.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: CategoryComponent, pathMatch: 'full' },
-      { path: 'categories/:categoryId/dishes', component:  DishListComponent },
+      { path: 'categories/:categoryId/dishes', component: DishListComponent },
+      { path: 'dishes/create', component: DishCreateComponent },
       { path: 'dishes/:dishId', component:  DishEditComponent },
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),
     BrowserAnimationsModule,
-    MatToolbarModule, MatCardModule, MatButtonModule, MatInputModule, MatFormFieldModule
+    MatToolbarModule, MatCardModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule
   ],
   providers: [CategoryService, DishService],
   bootstrap: [AppComponent]

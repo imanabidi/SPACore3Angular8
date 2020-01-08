@@ -13,6 +13,7 @@ export class DishEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private location: Location, private dishService: DishService) { }
   dish: Dish;
+
   ngOnInit() {
     const dishId = +this.route.snapshot.paramMap.get("dishId");
     this.dishService.getDish(dishId).subscribe(x => this.dish = x);
