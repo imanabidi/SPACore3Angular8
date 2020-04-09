@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class DishService {
    
   constructor(private http: HttpClient) { }
-  dish: Dish;
+  //dish: Dish;
 
   getDish(dishId: number): Observable<Dish> {
     return this.http.get<Dish>(`/api/dishes/${dishId}`);
